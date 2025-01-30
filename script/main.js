@@ -8,7 +8,6 @@ function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ball.draw();
     paddle.draw();
-    paddle.updatePaddle();
     score.draw();
     lives.draw();
 }

@@ -6,8 +6,8 @@ body {
     margin: 0;                
 }
 
-#canvas{
+#canvas {
     display: block;
-    background-color: burlywood;
-    margin: 0 auto;
+    background-color: rgb(145, 224, 255);
+    border: 3px solid rgb(14, 44, 100); 
 }
