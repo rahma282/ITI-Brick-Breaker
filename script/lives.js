@@ -4,6 +4,7 @@ export const lives = {
     draw() {
       ctx.font = '20px monospace';
       ctx.fillStyle = 'white';
-      ctx.fillText('lives: ' + this.value, 150, 20);
+      let hearts = '🩷'.repeat(this.value);
+      ctx.fillText(' ' + hearts, 150, 20);
     },
 };

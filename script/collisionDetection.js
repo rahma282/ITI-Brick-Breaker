@@ -1,6 +1,8 @@
 import { ball } from './ball.js';
 import { bricks } from './bricks.js';
 import { score } from './score.js';
+import { endGame } from './main.js'; 
+
 
 export function collisionDetection() {
   for (let c = 0; c < bricks.columns; c++) {
@@ -21,7 +23,8 @@ export function collisionDetection() {
             score.value++;
           }
           if (score.value === bricks.rows * bricks.columns) {
-            //won
+            //won case
+            endGame(true)
           }
         }
       }

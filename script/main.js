@@ -7,6 +7,7 @@ import { bricks } from './bricks.js';
 import { collisionDetection } from './collisionDetection.js';
 
 bricks.init();
+let gameOver = false;
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -31,11 +32,54 @@ function draw() {
 
     if (ball.y + ball.dy > canvas.height - ball.radius) {
 
-        //if(lives==0) lose
-        //lives--
+        if (lives.value > 0) {
+            lives.value -= 1;
+        }
+          if (lives.value === 0){
+            endGame(false);
+            //fraze
+          } 
+          
+          else {
+          // reset the ball's position after missing to centered on paddle
+          ball.x = paddle.x + paddle.width / 2; 
+          ball.y = paddle.y - ball.radius - 2;  
+          ball.dx = 2; 
+          ball.dy = -2;
+      }
     }
+   
 
     ball.x += ball.dx;
     ball.y += ball.dy;
 }
+
+
+export function reset(){
+    score.value =0;
+    lives.value=3;
+    gameOver =false;
+    //reset ball position
+    ball.x = canvas.width / 2;
+    ball.y = canvas.height - 30;
+    ball.dx = 2;
+    ball.dy = -2;
+    //reset paddle possition
+    paddle.x = canvas.width / 2 - paddle.width / 2;  
+    paddle.dx = 0;  //stop paddle movement
+    bricks.init();
+    draw();
+    document.getElementById("resetGame").style.display = "none";
+    document.getElementById("start").style.display = "block";
+
+}
+  export function endGame(won){
+    gameOver = true; //using for frazze paddle movement , ball movement
+    const resultText = document.getElementById("result-text");
+    resultText.innerText = won ? `You Win!`: `GAME OVER!! Try again...!`;
+    document.getElementById("resetGame").style.display = "block";
+}
+
 setInterval(draw, 10);
+document.getElementById("resetGame").addEventListener("click", reset);
+document.getElementById("start").addEventListener("click", draw);
