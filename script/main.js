@@ -6,6 +6,9 @@ import { lives } from './lives.js'
 import { bricks } from './bricks.js';
 import { collisionDetection } from './collisionDetection.js';
 import { endGame } from './endGame.js'; 
+import { level } from './levels.js';
+
+// level.draw();
 
 bricks.init();
 export const gameState = {

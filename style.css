@@ -17,6 +17,10 @@ body {
     display: none;
 }
 
+#lock{
+    display: none; 
+}
+
 #resetGame,#start{
 width: auto;
 min-width: 150px;
