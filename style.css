@@ -8,6 +8,11 @@ body {
 
 #canvas {
     display: block;
-    background-color: rgb(145, 224, 255);
-    border: 3px solid rgb(14, 44, 100); 
+    background-color: #6050DC;
+    border: 3px dotted #ffffff;
+    border-radius: 20px;
+}
+
+#crack{
+    display: none;
 }

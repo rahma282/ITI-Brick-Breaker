@@ -22,7 +22,7 @@ export const paddle = {
   y: canvas.height - 10,
   width: 80,
   height: 10,
-  color: "green",
+  color: "#eb5951",
   speed: 8,
   dx: 0,
   draw() {

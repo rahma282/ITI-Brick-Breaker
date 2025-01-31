@@ -3,7 +3,7 @@ export const lives = {
     value: 3,
     draw() {
       ctx.font = '20px monospace';
-      ctx.fillStyle = 'red';
+      ctx.fillStyle = 'white';
       ctx.fillText('lives: ' + this.value, 150, 20);
     },
 };
