@@ -5,9 +5,12 @@ import { score } from './score.js'
 import { lives } from './lives.js'
 import { bricks } from './bricks.js';
 import { collisionDetection } from './collisionDetection.js';
+import { endGame } from './endGame.js'; 
 
 bricks.init();
-let gameOver = false;
+export const gameState = {
+    gameOver: false
+};
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -58,7 +61,7 @@ function draw() {
 export function reset(){
     score.value =0;
     lives.value=3;
-    gameOver =false;
+    gameState.gameOver =false;
     //reset ball position
     ball.x = canvas.width / 2;
     ball.y = canvas.height - 30;
@@ -70,15 +73,9 @@ export function reset(){
     bricks.init();
     draw();
     document.getElementById("resetGame").style.display = "none";
-    document.getElementById("start").style.display = "block";
 
 }
-  export function endGame(won){
-    gameOver = true; //using for frazze paddle movement , ball movement
-    const resultText = document.getElementById("result-text");
-    resultText.innerText = won ? `You Win!`: `GAME OVER!! Try again...!`;
-    document.getElementById("resetGame").style.display = "block";
-}
+  
 
 setInterval(draw, 10);
 document.getElementById("resetGame").addEventListener("click", reset);
