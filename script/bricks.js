@@ -29,27 +29,18 @@ export const bricks = {
                     const brickY = r * (this.height + this.padding) + this.offsetTop;
                     brick.x = brickX;
                     brick.y = brickY;
-                    if (brick.isHit === 0){ // NOT HIT
-                        // ctx.beginPath();
-                        // ctx.rect(brickX, brickY, this.width, this.height);
-                        // ctx.fillStyle = '#EF0107';
-                        // ctx.fill();
-                        // ctx.closePath();
+                    if (brick.isHit === 0 || brick.isHit === 1){ // NOT HIT
                         const grad=ctx.createLinearGradient(0,0,400,200);
                         grad.addColorStop(0, "#DDA0DD");
                         grad.addColorStop(1, "#E6E6FA");
                         ctx.fillStyle = grad;
                         ctx.fillRect(brickX,brickY, this.width,this.height);
+
+                        if(brick.isHit === 1){
+                            const brickCrack = document.getElementById("crack");
+                            ctx.drawImage(brickCrack, brickX, brickY, 72, 24);
+                        }
                       }
-                      else if(brick.isHit === 1){ // HIT 1 TIME (brick png overlapping)
-                        // ctx.beginPath();
-                        // ctx.rect(brickX, brickY, this.width, this.height);
-                        // ctx.fillStyle = '#EF0107';
-                        // ctx.fill();
-                        // ctx.closePath();
-                        const brickCrack = document.getElementById("crack");
-                        ctx.drawImage(brickCrack, brickX, brickY, 72, 24);
-                    }
 
         
             }
