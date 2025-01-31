@@ -18,13 +18,14 @@ function keyUpHandler(e) {
 }
 
 export const paddle = {
-  x: canvas.width / 2 - 40,
-  y: canvas.height - 10,
-  width: 80,
-  height: 10,
+  x: canvas.width / 2 - 50,
+  y: canvas.height - 30,
+  width: 100,
+  height: 20,
   color: "#eb5951",
   speed: 8,
   dx: 0,
+
   draw() {
     ctx.beginPath();
     ctx.rect(paddle.x, paddle.y, paddle.width, paddle.height);
@@ -32,6 +33,7 @@ export const paddle = {
     ctx.fill();
     ctx.closePath();
   },
+  
   updatePaddle() {
     paddle.x += paddle.dx;
   

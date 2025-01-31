@@ -2,7 +2,7 @@ import { canvas, ctx } from './canvas.js';
 export const ball = {
     radius: 10,
     x: canvas.width / 2,
-    y: canvas.height - 30,
+    y: canvas.height - 50,
     dx: 2,
     dy: -2,
     draw() {
@@ -11,5 +11,5 @@ export const ball = {
       ctx.fillStyle = '#05bbaa';
       ctx.fill();
       ctx.closePath();
-    },
+    }
   };

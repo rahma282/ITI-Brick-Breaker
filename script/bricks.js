@@ -41,8 +41,6 @@ export const bricks = {
                             ctx.drawImage(brickCrack, brickX, brickY, 72, 24);
                         }
                       }
-
-        
             }
             
         }
