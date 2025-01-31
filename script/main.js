@@ -15,7 +15,7 @@ export const gameState = {
 function draw() {
     if (gameState.gameOver) 
         return;
-    
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     bricks.draw();
     ball.draw();
@@ -44,7 +44,6 @@ function draw() {
           if (lives.value === 0){
             gameState.gameOver = true; //using for frazze paddle movement , ball movement
             endGame(false);
-            //fraze
           } 
           
           else {

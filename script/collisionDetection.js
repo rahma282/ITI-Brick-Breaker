@@ -1,5 +1,6 @@
 import { ball } from './ball.js';
 import { bricks } from './bricks.js';
+import { lives } from './lives.js';
 import { score } from './score.js'; 
 
 
