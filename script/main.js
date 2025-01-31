@@ -13,6 +13,9 @@ export const gameState = {
 };
 
 function draw() {
+    if (gameState.gameOver) 
+        return;
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     bricks.draw();
     ball.draw();
@@ -20,7 +23,7 @@ function draw() {
     paddle.updatePaddle();
     score.draw();
     lives.draw();
-    collisionDetection();
+    collisionDetection(endGame);
 
     if (ball.x + ball.dx >= canvas.width - ball.radius || ball.x + ball.dx <= ball.radius) {
         ball.dx = -ball.dx;
@@ -39,6 +42,7 @@ function draw() {
             lives.value -= 1;
         }
           if (lives.value === 0){
+            gameState.gameOver = true; //using for frazze paddle movement , ball movement
             endGame(false);
             //fraze
           } 
@@ -55,6 +59,7 @@ function draw() {
 
     ball.x += ball.dx;
     ball.y += ball.dy;
+
 }
 
 
@@ -64,19 +69,27 @@ export function reset(){
     gameState.gameOver =false;
     //reset ball position
     ball.x = canvas.width / 2;
-    ball.y = canvas.height - 30;
+    ball.y = canvas.height - 50;
     ball.dx = 2;
     ball.dy = -2;
     //reset paddle possition
     paddle.x = canvas.width / 2 - paddle.width / 2;  
     paddle.dx = 0;  //stop paddle movement
+    //reset brakes
     bricks.init();
-    draw();
     document.getElementById("resetGame").style.display = "none";
 
 }
   
 
 setInterval(draw, 10);
-document.getElementById("resetGame").addEventListener("click", reset);
-document.getElementById("start").addEventListener("click", draw);
+
+document.getElementById("resetGame").addEventListener("click", () => {
+    reset();
+    draw();
+});
+document.getElementById("start").addEventListener("click", () => {
+    if (!gameState.gameOver) {
+        draw(); 
+    }
+});

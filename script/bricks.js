@@ -3,7 +3,7 @@ import { canvas, ctx } from './canvas.js';
 export const bricks = {
     width: 72,
     height: 24,
-    rows: 3,
+    rows: 1,
     columns: 7,
     padding: 12,
     offsetTop: 50,

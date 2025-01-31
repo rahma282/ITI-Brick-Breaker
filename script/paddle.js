@@ -35,8 +35,6 @@ export const paddle = {
   },
   
   updatePaddle() {
-    //put flag if the game not ended  
-    //if(!gameOver)
     paddle.x += paddle.dx;
   
     if (paddle.x < 0) {
