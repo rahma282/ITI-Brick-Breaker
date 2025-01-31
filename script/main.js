@@ -76,6 +76,7 @@ export function reset(){
     paddle.dx = 0;  //stop paddle movement
     //reset brakes
     bricks.init();
+    document.getElementById("result-text").innerText = "";
     document.getElementById("resetGame").style.display = "none";
 
 }
