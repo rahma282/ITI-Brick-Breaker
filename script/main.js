@@ -9,10 +9,11 @@ import { endGame } from './endGame.js';
 import { level } from './levels.js';
 
 level.draw();
-let drawgame;
+export let drawgame;
 level.clickedLevel = (selectedLevel) => {
     console.log(`Received in main.js: Level ${selectedLevel}`);
-    bricks.init();
+    bricks.init(selectedLevel);
+    clearInterval(drawgame);
     drawgame = setInterval(draw, 10);
 };
 
@@ -40,6 +41,7 @@ function draw() {
     if (ball.y + ball.dy > canvas.height - ball.radius) {
         lives.value -= 1;
         if (lives.value === 0){
+            lives.draw();
             endGame(false,score.value);
         }else{
            ball.x = canvas.width / 2; 

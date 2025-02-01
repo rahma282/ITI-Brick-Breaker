@@ -1,9 +1,9 @@
-import { canvas, ctx } from './canvas.js';
+import { ctx } from './canvas.js';
 
 export const bricks = {
     width: 72,
     height: 24,
-    rows: 1,
+    rows: 2,
     columns: 7,
     padding: 12,
     offsetTop: 50,
@@ -11,7 +11,9 @@ export const bricks = {
     brickArr:[],
 
 
-    init(){
+    init(level){
+        this.rows = 2;
+        this.rows+=level;
         for (let c = 0; c < this.columns; c++) {
         this.brickArr[c] = [];
             for (let r = 0; r < this.rows; r++) {

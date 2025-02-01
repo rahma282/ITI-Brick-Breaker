@@ -6,5 +6,5 @@ export const lives = {
       ctx.fillStyle = 'white';
       let hearts = '🩷'.repeat(this.value);
       ctx.fillText(' ' + hearts, 740, 25);
-    },
+    }
 };

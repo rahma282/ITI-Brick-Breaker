@@ -2,7 +2,7 @@ import { canvas, ctx } from './canvas.js';
 
 export const level = {
     levels: 6,
-    currentLevel: 1,
+    currentLevel: 6,
     clickedLevel: null,
     width: 100,
     height: 100,
