@@ -1,10 +1,10 @@
 import { ball } from './ball.js';
 import { bricks } from './bricks.js';
-import { lives } from './lives.js';
+import { endGame } from './endGame.js';
 import { score } from './score.js'; 
 
 
-export function collisionDetection(endGameCallback) {
+export function collisionDetection() {
   for (let c = 0; c < bricks.columns; c++) {
     for (let r = 0; r < bricks.rows; r++) {
       const b = bricks.brickArr[c][r];
@@ -23,7 +23,7 @@ export function collisionDetection(endGameCallback) {
             score.value++;
           }
           if (score.value === bricks.rows * bricks.columns) {
-            endGameCallback(true);
+            endGame(true,score.value);
           }
         }
       }

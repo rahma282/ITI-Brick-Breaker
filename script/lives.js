@@ -5,6 +5,6 @@ export const lives = {
       ctx.font = '20px monospace';
       ctx.fillStyle = 'white';
       let hearts = '🩷'.repeat(this.value);
-      ctx.fillText(' ' + hearts, 150, 20);
+      ctx.fillText(' ' + hearts, 740, 25);
     },
 };

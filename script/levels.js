@@ -1,10 +1,13 @@
-import {canvas, ctx } from './canvas.js';
+import { canvas, ctx } from './canvas.js';
+
 export const level = {
     levels: 6,
     currentLevel: 1,
+    clickedLevel: null,
     width: 100,
     height: 100,
     padding: 20,
+    levelPosition: [],
 
     draw() {
         const columns = 2;
@@ -25,8 +28,11 @@ export const level = {
         ctx.fillText("Select Levels", canvas.width / 2, startY);
 
         for (let c = 1; c <= this.levels; c++) {
-            const X = (((c - 1) % columns) * (this.width + this.padding))+ startX;
-            const Y = ((Math.floor((c - 1) / columns)) * (this.height + this.padding))+ startY+50;
+            const X = (((c - 1) % columns) * (this.width + this.padding)) + startX;
+            const Y = ((Math.floor((c - 1) / columns)) * (this.height + this.padding)) + startY + 50;
+
+            this.levelPosition.push({ level: c, x: X, y: Y});
+
             ctx.beginPath();
             const grad = ctx.createLinearGradient(0, 0, 400, 200);
             grad.addColorStop(0, "#DDA0DD");
@@ -35,6 +41,7 @@ export const level = {
             ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
             ctx.shadowBlur = 10;
             ctx.fillRect(X, Y, this.width, this.height);
+
             if (c <= this.currentLevel) {
                 ctx.fillStyle = '#6050DC';
                 ctx.font = "bold 70px Tahoma";
@@ -51,3 +58,20 @@ export const level = {
         }
     }
 };
+
+
+canvas.addEventListener("click", (event) => {
+    const rect = canvas.getBoundingClientRect();
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top;
+
+    level.levelPosition.forEach(pos => {
+        if (
+            mouseX >= pos.x && mouseX <= pos.x + level.width &&
+            mouseY >= pos.y && mouseY <= pos.y + level.height &&
+            pos.level <= level.currentLevel
+        ) {
+            level.clickedLevel(pos.level);
+        }
+    });
+});

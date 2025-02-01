@@ -8,25 +8,31 @@ import { collisionDetection } from './collisionDetection.js';
 import { endGame } from './endGame.js'; 
 import { level } from './levels.js';
 
-// level.draw();
+level.draw();
 
-bricks.init();
-export const gameState = {
-    gameOver: false
+level.clickedLevel = (selectedLevel) => {
+    console.log(`Received in main.js: Level ${selectedLevel}`);
+    bricks.init();
+    let drawgame = setInterval(draw, 10);
 };
 
-function draw() {
-    if (gameState.gameOver) 
-        return;
+// export const gameState = {
+//     gameOver: false
+// };
 
+function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // if (gameState.gameOver){
+    //     level.draw();
+    //     return;
+    // }      
     bricks.draw();
     ball.draw();
     paddle.draw();
     paddle.updatePaddle();
     score.draw();
     lives.draw();
-    collisionDetection(endGame);
+    collisionDetection();
 
     if (ball.x + ball.dx >= canvas.width - ball.radius || ball.x + ball.dx <= ball.radius) {
         ball.dx = -ball.dx;
@@ -40,59 +46,64 @@ function draw() {
     }
 
     if (ball.y + ball.dy > canvas.height - ball.radius) {
-
-        if (lives.value > 0) {
+        if (lives.value === 0) {
+            endGame(false,score.value);
+        }else{
             lives.value -= 1;
+            ball.x = canvas.width / 2; 
+            ball.y = canvas.height - 50;  
+            ball.dx = 2; 
+            ball.dy = -2; 
         }
-          if (lives.value === 0){
-            gameState.gameOver = true; //using for frazze paddle movement , ball movement
-            endGame(false);
-          } 
-          
-          else {
-          // reset the ball's position after missing to centered on paddle
-          ball.x = paddle.x + paddle.width / 2; 
-          ball.y = paddle.y - ball.radius - 2;  
-          ball.dx = 2; 
-          ball.dy = -2;
-      }
     }
-   
 
     ball.x += ball.dx;
     ball.y += ball.dy;
 
 }
 
+let playAgain = document.querySelector(".play-again");
+let gameModel = document.querySelector(".game-model");
 
-export function reset(){
-    score.value =0;
-    lives.value=3;
-    gameState.gameOver =false;
-    //reset ball position
+playAgain.addEventListener("click",function(){
+    score.value = 0;
+    lives.value = 3;
     ball.x = canvas.width / 2;
     ball.y = canvas.height - 50;
     ball.dx = 2;
     ball.dy = -2;
-    //reset paddle possition
-    paddle.x = canvas.width / 2 - paddle.width / 2;  
-    paddle.dx = 0;  //stop paddle movement
-    //reset brakes
-    bricks.init();
-    document.getElementById("result-text").innerText = "";
-    document.getElementById("resetGame").style.display = "none";
+    gameModel.style.display = "none";
+    clearInterval(drawgame);
+    // ctx.clearRect(0, 0, canvas.width, canvas.height);
+    level.draw();
+});
 
-}
+// export function reset(){
+//     score.value =0;
+//     lives.value=3;
+//     gameState.gameOver =false;
+//     //reset ball position
+//     ball.x = canvas.width / 2;
+//     ball.y = canvas.height - 50;
+//     ball.dx = 2;
+//     ball.dy = -2;
+//     //reset paddle possition
+//     paddle.x = canvas.width / 2 - paddle.width / 2;  
+//     paddle.dx = 0;  //stop paddle movement
+//     //reset brakes
+//     bricks.init();
+//     document.getElementById("result-text").innerText = "";
+//     document.getElementById("resetGame").style.display = "none";
+
+// }
   
 
-setInterval(draw, 10);
-
-document.getElementById("resetGame").addEventListener("click", () => {
-    reset();
-    draw();
-});
-document.getElementById("start").addEventListener("click", () => {
-    if (!gameState.gameOver) {
-        draw(); 
-    }
-});
+// document.getElementById("resetGame").addEventListener("click", () => {
+//     reset();
+//     draw();
+// });
+// document.getElementById("start").addEventListener("click", () => {
+//     if (!gameState.gameOver) {
+//         draw(); 
+//     }
+// });

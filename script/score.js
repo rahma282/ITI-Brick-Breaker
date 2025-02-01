@@ -4,6 +4,6 @@ export const score = {
     draw() {
       ctx.font = '20px monospace';
       ctx.fillStyle = 'white';
-      ctx.fillText('Score: ' + this.value, 8, 20);
+      ctx.fillText('Score: ' + this.value, 60, 25);
     },
 };
