@@ -9,11 +9,11 @@ import { endGame } from './endGame.js';
 import { level } from './levels.js';
 
 level.draw();
-
+let drawgame;
 level.clickedLevel = (selectedLevel) => {
     console.log(`Received in main.js: Level ${selectedLevel}`);
     bricks.init();
-    let drawgame = setInterval(draw, 10);
+    drawgame = setInterval(draw, 10);
 };
 
 function draw() {
@@ -58,14 +58,15 @@ let playAgain = document.querySelector(".play-again");
 let gameModel = document.querySelector(".game-model");
 
 playAgain.addEventListener("click",function(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     score.value = 0;
     lives.value = 3;
     ball.x = canvas.width / 2;
     ball.y = canvas.height - 50;
     ball.dx = 2;
     ball.dy = -2;
+    paddle.dx = 0;
     gameModel.style.display = "none";
     clearInterval(drawgame);
-    // ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // level.draw();
+    level.draw();
 });
