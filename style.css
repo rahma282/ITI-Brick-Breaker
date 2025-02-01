@@ -21,31 +21,6 @@ body {
     display: none; 
 }
 
-#resetGame,#start{
-width: auto;
-min-width: 150px;
-margin-top: 20px;
-padding: 10px 20px;
-border: 1px solid #a1a1a1;
-border-radius: 4px;
-box-sizing: border-box;
-font-style: italic;
-font-size: medium;
-color: crimson;
-font-weight: bold;
-}
-#resetGame{
-color: rgb(134, 10, 128);
-}
-
-#start {
-color: rgb(20, 117, 11);
-}
-#result-text {
-    margin: 20px 0;
-    font-size: 20px;
-    font-style: italic;
-}
 
 .game-model{
     position: fixed;
