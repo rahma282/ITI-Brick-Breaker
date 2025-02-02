@@ -1,17 +1,19 @@
-import { canvas, ctx } from './canvas.js';
+import { ctx } from './canvas.js';
 
 export const bricks = {
     width: 72,
     height: 24,
     rows: 1,
-    columns: 7,
+    columns: 1,
     padding: 12,
     offsetTop: 50,
     offsetLeft: 114,
     brickArr:[],
 
 
-    init(){
+    init(level){
+        this.rows = 2;
+        this.rows+=level;
         for (let c = 0; c < this.columns; c++) {
         this.brickArr[c] = [];
             for (let r = 0; r < this.rows; r++) {
@@ -22,7 +24,9 @@ export const bricks = {
 
 
     draw(){
+        const brickAudio = document.getElementById("audioo");
         for (let c = 0; c < this.columns; c++) {
+            
             for (let r = 0; r < this.rows; r++) {
                 const brick = this.brickArr[c][r];
                     const brickX = c * (this.width + this.padding) + this.offsetLeft;
@@ -37,8 +41,11 @@ export const bricks = {
                         ctx.fillRect(brickX,brickY, this.width,this.height);
 
                         if(brick.isHit === 1){
+                            // var flag=1;
                             const brickCrack = document.getElementById("crack");
                             ctx.drawImage(brickCrack, brickX, brickY, 72, 24);
+                            brickAudio.play();
+                            // brick is = 1 so audio won't stop (pause not working)
                         }
                       }
             }

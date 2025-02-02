@@ -1,4 +1,5 @@
 import { canvas, ctx } from './canvas.js';
+
 export const ball = {
     radius: 10,
     x: canvas.width / 2,

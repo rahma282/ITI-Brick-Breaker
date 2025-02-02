@@ -1,64 +1,90 @@
 body {
-    display: flex;
-    justify-content: center;  
-    align-items: center;      
-    height: 100vh;            
-    margin: 0;                
+  display: flex;
+  justify-content: center;  
+  align-items: center;      
+  height: 100vh;            
+  margin: 0; 
+  background-image: url(./assets/bdd44007-789e-4c1a-9495-7500de7d8b2e.jpg);     
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#mainImg{
+display:none;
 }
 
 #canvas {
-    display: block;
-    background-color: #6050DC;
-    border: 3px dotted #ffffff;
-    border-radius: 20px;
+  display: block;
+  background-color: #6050DC;
+  border: 3px dotted #ffffff;
+  border-radius: 20px;
 }
 
 #crack{
-    display: none;
+  display: none;
 }
 
 #lock{
-    display: none; 
+  display: none; 
 }
 
 
 .game-model{
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0,0,0,0.8);
-    display: none;
-  }
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.8);
+  display: none;
+}
 
-  .game-model .content{
-    text-align: center;
-    color: white;
-  }
+.game-model .content{
+  text-align: center;
+  color: white;
+}
 
-  .game-model h2{
-    font-weight: 800;
-    font-size: 5rem;
-    margin-bottom: 40px;
-  }
+.game-model h2{
+  font-weight: 800;
+  font-size: 5rem;
+  margin-bottom: 40px;
+}
 
-  .game-model p{
-    font-weight: 500;
-    font-size: 2rem;
-  }
+.game-model p{
+  font-weight: 500;
+  font-size: 2rem;
+}
 
-  .game-model button{
-    font-size: 1rem;
-    font-weight: 700;
-    margin-top: 30px;
-    padding: 12px 23px;
-    background: #6050DC;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-  }
+.game-model button{
+  font-size: 1rem;
+  font-weight: 700;
+  margin-top: 30px;
+  padding: 12px 23px;
+  background: #6050DC;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+@font-face {
+  font-family: 'NewFont';
+  src: url(./assets/101BrickLayer-eMgB.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'NewFont1';
+  src: url(./assets/Bricks-lgMZV.ttf) format('truetype');
+}
+
+#audioo{
+  display: none;
+}
+
+#gameAudio{
+  display: none;
+  /* visibility: hidden; */
+}
