@@ -8,6 +8,7 @@ import { collisionDetection } from './collisionDetection.js';
 import { endGame } from './endGame.js'; 
 import { level } from './levels.js';
 import { mainMenu } from './mainMenu.js';
+import { heart } from './bonus.js';
 
 
 mainMenu.draw();
@@ -23,44 +24,49 @@ level.clickedLevel = (selectedLevel) => {
     drawgame = setInterval(draw, 10);
 };
 
-function draw() { 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);    
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     bricks.draw();
     ball.draw();
     paddle.draw();
     paddle.updatePaddle();
     score.draw();
     lives.draw();
+
+    if (heart.active) {
+        heart.updateHeart(paddle, lives);
+        heart.draw();
+    }
+
     collisionDetection();
 
     if (ball.x + ball.dx >= canvas.width - ball.radius || ball.x + ball.dx <= ball.radius) {
         ball.dx = -ball.dx;
     }
 
-    if ( ball.y + ball.dy <= ball.radius ||
+    if (ball.y + ball.dy <= ball.radius ||
         ((ball.x + ball.radius) >= paddle.x &&
-        (ball.x - ball.radius) <= (paddle.x + paddle.width) &&
-        (ball.y + ball.radius) >= paddle.y)) {
+            (ball.x - ball.radius) <= (paddle.x + paddle.width) &&
+            (ball.y + ball.radius) >= paddle.y)) {
         ball.dy = -ball.dy;
     }
 
     if (ball.y + ball.dy > canvas.height - ball.radius) {
         lives.value -= 1;
         document.getElementById("losingLivesAudio").play();
-        if (lives.value === 0){
+        if (lives.value === 0) {
             lives.draw();
-            setTimeout(() => endGame(false,score.value),100);
-        }else{
+            setTimeout(() => endGame(false, score.value), 100);
+        } else {
             ball.x = paddle.x + paddle.width / 2;
-            ball.y = paddle.y - ball.radius - 5;  
+            ball.y = paddle.y - ball.radius - 5;
             ball.dx = 2;
             ball.dy = -2;
         }
     }
-    
+
     ball.x += ball.dx;
     ball.y += ball.dy;
-
 }
 
 let playAgain = document.querySelector(".play-again");
@@ -80,4 +86,3 @@ playAgain.addEventListener("click",function(){
     clearInterval(drawgame);
     level.draw();
 });
-
