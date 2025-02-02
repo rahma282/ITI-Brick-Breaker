@@ -49,12 +49,12 @@ function draw() {
         document.getElementById("losingLivesAudio").play();
         if (lives.value === 0){
             lives.draw();
-            endGame(false,score.value);
+            setTimeout(() => endGame(false,score.value),100);
         }else{
-           ball.x = canvas.width / 2; 
-           ball.y = canvas.height - 50;  
-           ball.dx = 2; 
-           ball.dy = -2; 
+            ball.x = paddle.x + paddle.width / 2;
+            ball.y = paddle.y - ball.radius - 5;  
+            ball.dx = 2;
+            ball.dy = -2;
         }
     }
     
@@ -74,8 +74,10 @@ playAgain.addEventListener("click",function(){
     ball.y = canvas.height - 50;
     ball.dx = 2;
     ball.dy = -2;
+    paddle.x = (canvas.width - paddle.width) / 2;
     paddle.dx = 0;
     gameModel.style.display = "none";
     clearInterval(drawgame);
     level.draw();
 });
+
