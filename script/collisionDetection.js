@@ -6,6 +6,7 @@ import { score } from './score.js';
 
 export function collisionDetection() {
   for (let c = 0; c < bricks.columns; c++) {
+    const brickAudio = document.getElementById("audioo");
     for (let r = 0; r < bricks.rows; r++) {
       const b = bricks.brickArr[c][r];
       if (b.isHit === 0 || b.isHit === 1) {
@@ -17,10 +18,14 @@ export function collisionDetection() {
         ) {
           ball.dy = -ball.dy;
           ball.dx = -ball.dx;
-          if(b.isHit === 0) b.isHit= 1;
+          if(b.isHit === 0) {
+          b.isHit= 1;
+          brickAudio.play();
+          }
           else{ 
             b.isHit= 2;
             score.value++;
+            brickAudio.play();
           }
           if (score.value === bricks.rows * bricks.columns) {
             setTimeout(() => endGame(true, score.value), 100);

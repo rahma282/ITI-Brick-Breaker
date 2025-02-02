@@ -26,9 +26,7 @@ export const bricks = {
     },
 
     draw() {
-        const brickAudio = document.getElementById("audioo");
         let currentBrickCount = 0;
-
         for (let c = 0; c < this.columns; c++) {
             for (let r = 0; r < this.rows; r++) {
                 const brick = this.brickArr[c][r];
@@ -47,7 +45,6 @@ export const bricks = {
                     if (brick.isHit === 1) {
                         const brickCrack = document.getElementById("crack");
                         ctx.drawImage(brickCrack, brickX, brickY, 72, 24);
-                        brickAudio.play();
                     }
 
                     currentBrickCount++;
