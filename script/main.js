@@ -9,14 +9,17 @@ import { endGame } from './endGame.js';
 import { level } from './levels.js';
 
 level.draw();
+
 let drawgame;
+
 level.clickedLevel = (selectedLevel) => {
     console.log(`Received in main.js: Level ${selectedLevel}`);
     bricks.init();
+    clearInterval(drawgame)
     drawgame = setInterval(draw, 10);
 };
 
-function draw() {
+function draw() { 
     ctx.clearRect(0, 0, canvas.width, canvas.height);    
     bricks.draw();
     ball.draw();
@@ -48,7 +51,7 @@ function draw() {
            ball.dy = -2; 
         }
     }
-
+    
     ball.x += ball.dx;
     ball.y += ball.dy;
 
