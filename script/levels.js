@@ -2,7 +2,8 @@ import { canvas, ctx } from './canvas.js';
 
 export const level = {
     levels: 6,
-    currentLevel: 6,
+    maxLevel: 1,
+    currentLevel: 0,
     clickedLevel: null,
     width: 100,
     height: 100,
@@ -17,12 +18,11 @@ export const level = {
         const startX = (canvas.width - totalWidth) / 2;
         const startY = (canvas.height - totalHeight) / 2;
 
-        // const gradTitle = ctx.createLinearGradient(0, 0, 400, 200);
-        // gradTitle.addColorStop(0, "#DDA0DD");
-        // gradTitle.addColorStop(1, "#E6E6FA");
+        const grad = ctx.createLinearGradient(0, 0, 400, 200);
+        grad.addColorStop(0, "#DDA0DD");
+        grad.addColorStop(1, "#E6E6FA");
 
-        // ctx.fillStyle = gradTitle;
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = grad;
         ctx.font = "70px NewFont";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
@@ -35,15 +35,10 @@ export const level = {
             this.levelPosition.push({ level: c, x: X, y: Y});
 
             ctx.beginPath();
-            // const grad = ctx.createLinearGradient(0, 0, 400, 200);
-            // grad.addColorStop(0, "#DDA0DD");
-            // grad.addColorStop(1, "#E6E6FA");
-            ctx.fillStyle = 'white';
-            // ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
-            // ctx.shadowBlur = 10;
+            ctx.fillStyle = grad;
             ctx.fillRect(X, Y, this.width, this.height);
 
-            if (c <= this.currentLevel) {
+            if (c <= this.maxLevel) {
                 ctx.fillStyle = '#6050DC';
                 ctx.font = " 70px NewFont";
                 ctx.textAlign = "center";
@@ -70,7 +65,7 @@ canvas.addEventListener("click", (event) => {
         if (
             mouseX >= pos.x && mouseX <= pos.x + level.width &&
             mouseY >= pos.y && mouseY <= pos.y + level.height &&
-            pos.level <= level.currentLevel
+            pos.level <= level.maxLevel
         ) {
             level.clickedLevel(pos.level);
         }

@@ -8,8 +8,9 @@ export const ball = {
     radius: 10,
     x: canvas.width / 2,
     y: canvas.height - 50,
-    dx: 5,
-    dy: -5,
+    dx: 1,
+    dy: -1,
+
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
@@ -43,7 +44,6 @@ export const ball = {
         lives.value -= 1;
         document.getElementById("losingLivesAudio").play();
         if (lives.value === 0) {
-            lives.draw();
             setTimeout(() => endGame(false, score.value), 100);
         } else {
               ball.x = paddle.x + paddle.width / 2;

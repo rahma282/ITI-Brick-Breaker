@@ -23,7 +23,6 @@ export function collisionDetection() {
             score.value++;
           }
           if (score.value === bricks.rows * bricks.columns) {
-            score.draw(); 
             setTimeout(() => endGame(true, score.value), 100);
           }
         }

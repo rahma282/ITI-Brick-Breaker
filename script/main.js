@@ -5,7 +5,6 @@ import { score } from './score.js'
 import { lives } from './lives.js'
 import { bricks } from './bricks.js';
 import { collisionDetection } from './collisionDetection.js';
-import { endGame } from './endGame.js'; 
 import { level } from './levels.js';
 import { mainMenu } from './mainMenu.js';
 import { heart } from './bonus.js';
@@ -13,13 +12,15 @@ import { heart } from './bonus.js';
 
 mainMenu.draw();
 
-// level.draw();
-
 export let drawgame;
 level.clickedLevel = (selectedLevel) => {
-    console.log(`Received in main.js: Level ${selectedLevel}`);
+    level.currentLevel = selectedLevel;
     document.getElementById("choosingLevelAudio").play();
     bricks.init(selectedLevel);
+    ball.x = canvas.width / 2;
+    ball.y = canvas.height - 50;
+    ball.dx = 1 + level.currentLevel;
+    ball.dy = -(ball.dx);
     clearInterval(drawgame);
     drawgame = setInterval(draw, 10);
 };
@@ -49,10 +50,6 @@ playAgain.addEventListener("click",function(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     score.value = 0;
     lives.value = 3;
-    ball.x = canvas.width / 2;
-    ball.y = canvas.height - 50;
-    ball.dx = 2;
-    ball.dy = -2;
     paddle.x = (canvas.width - paddle.width) / 2;
     paddle.dx = 0;
     gameModel.style.display = "none";

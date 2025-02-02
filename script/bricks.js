@@ -4,7 +4,7 @@ import { heart } from "./bonus.js";
 export const bricks = {
     width: 72,
     height: 24,
-    rows: 3,
+    rows: 2,
     columns: 3,
     padding: 12,
     offsetTop: 50,
@@ -14,8 +14,7 @@ export const bricks = {
     previousBrickCount: 0,
 
     init(level) {
-        this.rows = 2;
-        this.rows += level;
+        this.rows= 2+ level;
         this.totalBricks = this.columns * this.rows;
         this.previousBrickCount = this.totalBricks;
         for (let c = 0; c < this.columns; c++) {
