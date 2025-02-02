@@ -7,11 +7,17 @@ import { bricks } from './bricks.js';
 import { collisionDetection } from './collisionDetection.js';
 import { endGame } from './endGame.js'; 
 import { level } from './levels.js';
+import { mainMenu } from './mainMenu.js';
 
-level.draw();
+
+mainMenu.draw();
+
+// level.draw();
+
 export let drawgame;
 level.clickedLevel = (selectedLevel) => {
     console.log(`Received in main.js: Level ${selectedLevel}`);
+    document.getElementById("choosingLevelAudio").play();
     bricks.init(selectedLevel);
     clearInterval(drawgame);
     drawgame = setInterval(draw, 10);
@@ -40,6 +46,7 @@ function draw() {
 
     if (ball.y + ball.dy > canvas.height - ball.radius) {
         lives.value -= 1;
+        document.getElementById("losingLivesAudio").play();
         if (lives.value === 0){
             lives.draw();
             endGame(false,score.value);

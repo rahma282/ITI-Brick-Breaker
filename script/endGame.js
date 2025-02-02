@@ -9,4 +9,11 @@ export function endGame(won,score){
     gameModel.querySelector(".your-score").innerText=`${score}`;
     const resultText = gameModel.querySelector(".content h2");
     resultText.innerText = won ? `You Win!`: `GAME OVER!`;
+    if (resultText.innerText === 'GAME OVER!'){
+        document.getElementById("loseAudio").play();
+    }
+    else if(resultText.innerText === 'You Win!'){
+        document.getElementById("winAudio").play();
+    }
+    
 }
