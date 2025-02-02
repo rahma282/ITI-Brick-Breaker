@@ -41,7 +41,8 @@ export const ball = {
       }
 
     if (ball.y + ball.radius > canvas.height) {
-        lives.value -= 1;
+        if (lives.value >0)
+          lives.value -= 1;
         document.getElementById("losingLivesAudio").play();
         if (lives.value === 0) {
             setTimeout(() => endGame(false, score.value), 100);
