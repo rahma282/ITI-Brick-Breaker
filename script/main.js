@@ -32,6 +32,7 @@ function draw() {
     paddle.updatePaddle();
     score.draw();
     lives.draw();
+    ball.updateBall();
 
     if (heart.active) {
         heart.updateHeart(paddle, lives);
@@ -39,34 +40,6 @@ function draw() {
     }
 
     collisionDetection();
-
-    if (ball.x + ball.dx >= canvas.width - ball.radius || ball.x + ball.dx <= ball.radius) {
-        ball.dx = -ball.dx;
-    }
-
-    if (ball.y + ball.dy <= ball.radius ||
-        ((ball.x + ball.radius) >= paddle.x &&
-            (ball.x - ball.radius) <= (paddle.x + paddle.width) &&
-            (ball.y + ball.radius) >= paddle.y)) {
-        ball.dy = -ball.dy;
-    }
-
-    if (ball.y + ball.dy > canvas.height - ball.radius) {
-        lives.value -= 1;
-        document.getElementById("losingLivesAudio").play();
-        if (lives.value === 0) {
-            lives.draw();
-            setTimeout(() => endGame(false, score.value), 100);
-        } else {
-            ball.x = paddle.x + paddle.width / 2;
-            ball.y = paddle.y - ball.radius - 5;
-            ball.dx = 2;
-            ball.dy = -2;
-        }
-    }
-
-    ball.x += ball.dx;
-    ball.y += ball.dy;
 }
 
 let playAgain = document.querySelector(".play-again");
