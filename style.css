@@ -9,28 +9,26 @@ body {
   background-size: cover;
 }
 
-#mainImg{
-display:none;
+#mainImg {
+  display: none;
 }
 
 #canvas {
   display: block;
-  background-color: #6050DC;
-  /* background-color: white; */
+  background-color: #2d2474;
   border: 3px dotted #ffffff;
   border-radius: 20px;
 }
 
-#crack{
+#crack {
   display: none;
 }
 
-#lock{
+#lock {
   display: none; 
 }
 
-
-.game-model{
+.game-model {
   position: fixed;
   left: 0;
   top: 0;
@@ -43,23 +41,23 @@ display:none;
   display: none;
 }
 
-.game-model .content{
+.game-model .content {
   text-align: center;
   color: white;
 }
 
-.game-model h2{
+.game-model h2 {
   font-weight: 800;
   font-size: 5rem;
   margin-bottom: 40px;
 }
 
-.game-model p{
+.game-model p {
   font-weight: 500;
   font-size: 2rem;
 }
 
-.game-model button{
+.game-model button {
   font-size: 1rem;
   font-weight: 700;
   margin-top: 30px;
@@ -73,14 +71,96 @@ display:none;
 
 @font-face {
   font-family: 'NewFont';
-  src: url('./assets/brickFont.ttf');
+  src: url(./assets/101BrickLayer-eMgB.ttf) format('truetype');
 }
 
-#audioo{
+@font-face {
+  font-family: 'NewFont1';
+  src: url(./assets/Bricks-lgMZV.ttf) format('truetype');
+}
+
+#audioo {
   display: none;
 }
 
-#gameAudio{
+#gameAudio {
   display: none;
-  /* visibility: hidden; */
+}
+
+@media (max-width: 1024px) {
+  body {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  #canvas {
+    width: 90%;
+    max-height: 70vh;  
+    height: auto;
+  }
+
+  .game-model h2 {
+    font-size: 4rem;
+  }
+
+  .game-model p {
+    font-size: 1.5rem;
+  }
+
+  .game-model button {
+    font-size: 0.9rem;
+    padding: 10px 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  #canvas {
+    width: 90%;
+    max-height: 60vh;  
+    height: auto;
+  }
+
+  .game-model h2 {
+    font-size: 3rem;
+  }
+
+  .game-model p {
+    font-size: 1.2rem;
+  }
+
+  .game-model button {
+    font-size: 0.8rem;
+    padding: 8px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  #canvas {
+    width: 100%;
+    max-height: 50vh;  
+    height: auto;
+  }
+
+  .game-model h2 {
+    font-size: 2.5rem;
+  }
+
+  .game-model p {
+    font-size: 1.1rem;
+  }
+
+  .game-model button {
+    font-size: 0.7rem;
+    padding: 6px 12px;
+  }
 }
