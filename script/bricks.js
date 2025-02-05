@@ -4,8 +4,8 @@ import { heart } from "./bonus.js";
 export const bricks = {
     width: 72,
     height: 24,
-    rows: 2,
-    columns: 3,
+    rows: 1,
+    columns: 1,
     padding: 12,
     offsetTop: 50,
     offsetLeft: 114,

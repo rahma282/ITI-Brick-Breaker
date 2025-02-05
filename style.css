@@ -16,6 +16,7 @@ display:none;
 #canvas {
   display: block;
   background-color: #6050DC;
+  /* background-color: white; */
   border: 3px dotted #ffffff;
   border-radius: 20px;
 }
@@ -72,12 +73,7 @@ display:none;
 
 @font-face {
   font-family: 'NewFont';
-  src: url(./assets/101BrickLayer-eMgB.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: 'NewFont1';
-  src: url(./assets/Bricks-lgMZV.ttf) format('truetype');
+  src: url('./assets/brickFont.ttf');
 }
 
 #audioo{

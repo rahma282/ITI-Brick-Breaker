@@ -37,6 +37,7 @@ function draw() {
 
     if (heart.active) {
         heart.updateHeart(paddle, lives);
+        document.getElementById("bonusSound").play();
         heart.draw();
     }
 

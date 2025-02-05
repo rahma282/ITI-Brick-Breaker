@@ -22,7 +22,9 @@ export const heart = {
                 this.x >= paddle.x &&
                 this.x <= paddle.x + paddle.width) {
                 this.active = false;
-                lives.value += 1;
+                if(lives.value<3){
+                    lives.value += 1;
+                }
             }
 
             if (this.y > canvas.height) {
