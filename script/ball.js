@@ -37,23 +37,24 @@ export const ball = {
       ball.x + ball.radius >= paddle.x && 
       ball.x - ball.radius <= paddle.x + paddle.width 
     ) {
-      const ballBottom = ball.y + ball.radius;
-      const ballTop = ball.y - ball.radius;
-      const ballRight = ball.x + ball.radius;
-      const ballLeft = ball.x - ball.radius;
-      const paddleBottom = paddle.y + paddle.height;
-      const paddleTop = paddle.y;
-      const paddleRight = paddle.x + paddle.width;
-      const paddleLeft = paddle.x;
+      ball.dy = -ball.dy; 
+      // if (ballBottom >= paddleTop && ballTop <= paddleBottom) {
+      //   ball.dy = -ball.dy; 
+      // }
 
-      if (ballBottom >= paddleTop && ballTop <= paddleBottom) {
-        ball.dy = -ball.dy; 
-      }
-
-      if (ballRight >= paddleLeft && ballLeft <= paddleRight) {
-        ball.dx = -ball.dx; 
-      }
+      // if (ballRight >= paddleLeft && ballLeft <= paddleRight) {
+      //   ball.dx = -ball.dx; 
+      // }
     }
+
+    // if (
+    //   ball.y + ball.radius >= paddle.y && 
+    //   (ball.y - ball.radius) <= (paddle.y + paddle.height) &&
+    //   ball.x >= paddle.x &&               
+    //   ball.x <= paddle.x + paddle.width   
+    // ) {
+    //   ball.dy = -ball.dy;
+    // }
 
     if (ball.y + ball.radius >= canvas.height) {
       document.getElementById("losingLivesAudio").play();
