@@ -71,7 +71,7 @@ body {
 
 @font-face {
   font-family: 'NewFont';
-  src: url(./assets/101BrickLayer-eMgB.ttf) format('truetype');
+  src: url(./assets/brickFont.ttf);
 }
 
 @font-face {
